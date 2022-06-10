@@ -227,7 +227,7 @@ uint32_t frequency_count_khz(uint src) {
     fc->ref_khz = clock_get_hz(clk_ref) / 1000;
 
     // FIXME: Don't pick random interval. Use best interval
-    fc->interval = 10;
+    fc->interval = 12;
 
     // No min or max
     fc->min_khz = 0;
