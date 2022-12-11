@@ -114,7 +114,7 @@ void rtc_enable_alarm(void) {
     }
 }
 
-static void rtc_irq_handler(void) {
+static void __no_inline_not_in_flash_func(rtc_irq_handler)(void) {
     // Always disable the alarm to clear the current IRQ.
     // Even if it is a repeatable alarm, we don't want it to keep firing.
     // If it matches on a second it can keep firing for that second.
