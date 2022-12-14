@@ -192,6 +192,7 @@ static void start_spi_comms(cyw43_int_t *self) {
     // Pull CS low
     cs_set(false);
     gpio_set_function(DATA_OUT_PIN, bus_data->pio_func_sel);
+    gpio_set_function(CLOCK_PIN, bus_data->pio_func_sel);
 }
 
 // we need to atomically de-assert CS and enable IRQ
