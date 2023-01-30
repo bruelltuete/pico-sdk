@@ -251,6 +251,12 @@ void gpio_init(uint gpio) {
 
 void gpio_deinit(uint gpio) {
     gpio_set_function(gpio, GPIO_FUNC_NULL);
+    gpio_disable_pulls(gpio);
+
+    // disable input, disable output.
+    hw_write_masked(&padsbank0_hw->io[gpio],
+                   PADS_BANK0_GPIO0_OD_BITS,
+                   PADS_BANK0_GPIO0_IE_BITS | PADS_BANK0_GPIO0_OD_BITS);
 }
 
 void gpio_init_mask(uint gpio_mask) {
