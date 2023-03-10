@@ -85,7 +85,9 @@ SECTIONS
 
         *(.eh_frame*)
         . = ALIGN(4);
-    } > FLASH
+    } > FLASH 
+        /* udf has opcode 0xDE and one (ignored) immediate parameter, which we set to 0xDE, giving us 0xDEDE */
+        = 0xDEDE
 
     .rodata : {
         *(EXCLUDE_FILE(*libgcc.a: *libc.a:*lib_a-mem*.o *libm.a:) .rodata*)
@@ -128,11 +130,13 @@ SECTIONS
         __data_start__ = .;
         *(vtable)
 
+        FILL(0xDEDE)
         *(.time_critical*)
 
         /* remaining .text and .rodata; i.e. stuff we exclude above because we want it in RAM */
         *(.text*)
         . = ALIGN(4);
+        FILL(0)
         *(.rodata*)
         . = ALIGN(4);
 
