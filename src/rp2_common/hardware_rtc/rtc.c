@@ -39,7 +39,7 @@ void rtc_init(void) {
     rtc_hw->clkdiv_m1 = rtc_freq;
 }
 
-static bool valid_datetime(datetime_t *t) {
+static bool valid_datetime(const datetime_t *t) {
     // Valid ranges taken from RTC doc. Note when setting an RTC alarm
     // these values are allowed to be -1 to say "don't match this value"
     if (!(t->year >= 0 && t->year <= 4095)) return false;
@@ -52,7 +52,7 @@ static bool valid_datetime(datetime_t *t) {
     return true;
 }
 
-bool rtc_set_datetime(datetime_t *t) {
+bool rtc_set_datetime(const datetime_t *t) {
     if (!valid_datetime(t)) {
         return false;
     }

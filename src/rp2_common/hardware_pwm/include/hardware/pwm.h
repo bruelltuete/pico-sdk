@@ -75,7 +75,7 @@ static inline void check_slice_num_param(__unused uint slice_num) {
  *
  * \return The PWM slice number that controls the specified GPIO.
  */
-static inline uint pwm_gpio_to_slice_num(uint gpio) {
+static inline constexpr uint pwm_gpio_to_slice_num(uint gpio) {
     valid_params_if(PWM, gpio < NUM_BANK0_GPIOS);
     return (gpio >> 1u) & 7u;
 }
@@ -87,7 +87,7 @@ static inline uint pwm_gpio_to_slice_num(uint gpio) {
  *
  * \return The PWM channel that controls the specified GPIO.
  */
-static inline uint pwm_gpio_to_channel(uint gpio) {
+static inline constexpr uint pwm_gpio_to_channel(uint gpio) {
     valid_params_if(PWM, gpio < NUM_BANK0_GPIOS);
     return gpio & 1u;
 }

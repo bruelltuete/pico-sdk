@@ -54,7 +54,7 @@ void rtc_init(void);
  * \param t Pointer to a \ref datetime_t structure contains time to set
  * \return true if set, false if the passed in datetime was invalid.
  */
-bool rtc_set_datetime(datetime_t *t);
+bool rtc_set_datetime(const datetime_t *t);
 
 /*! \brief Get the current time from the RTC
  *  \ingroup hardware_rtc
